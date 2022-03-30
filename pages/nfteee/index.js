@@ -62,7 +62,7 @@ export default function NFTEEE(props) {
       // We connect to the Contract using a Provider, so we will only
       // have read-only access to the Contract
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, NFTEEE_ABI, provider);
-      console.log("NFT Contract: ", await nftContract.presaleStarted());
+      // console.log("NFT Contract: ", await nftContract.presaleStarted());
       // call the presaleStarted from the contract
       const _presaleStarted = await nftContract.presaleStarted();
       if (!_presaleStarted) {
@@ -278,30 +278,17 @@ export default function NFTEEE(props) {
   useEffect(() => {
     // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
     if (!wallet.walletConnected) {
-
-      // Check if presale has started and ended
-      const _presaleStarted = checkIfPresaleStarted();
-      if (_presaleStarted) {
-        checkIfPresaleEnded();
-      }
-
-      getTokenIdsMinted();
-
-      // Set an interval which gets called every 5 seconds to check presale has ended
-      const presaleEndedInterval = setInterval(async function () {
+      const doAsync = () => {
+        // Check if presale has started and ended
         const _presaleStarted = await checkIfPresaleStarted();
         if (_presaleStarted) {
-          const _presaleEnded = await checkIfPresaleEnded();
-          if (_presaleEnded) {
-            clearInterval(presaleEndedInterval);
-          }
+          await checkIfPresaleEnded();
         }
-      }, 5 * 1000);
 
-      // set an interval to get the number of token Ids minted every 5 seconds
-      setInterval(async function () {
         await getTokenIdsMinted();
-      }, 5 * 1000);
+      };
+
+      doAsync();
     }
   }, [wallet.walletConnected]);
 
