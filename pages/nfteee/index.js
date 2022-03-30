@@ -65,6 +65,7 @@ export default function NFTEEE(props) {
       // console.log("NFT Contract: ", await nftContract.presaleStarted());
       // call the presaleStarted from the contract
       const _presaleStarted = await nftContract.presaleStarted();
+      
       if (!_presaleStarted) {
         await getOwner();
       }
@@ -277,7 +278,7 @@ export default function NFTEEE(props) {
   // In this case, whenever the value of `walletConnected` changes - this effect will be called
   useEffect(() => {
     // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
-    if (!wallet.walletConnected) {
+    if (wallet.walletConnected) {
       const doAsync = async () => {
         // Check if presale has started and ended
         const _presaleStarted = await checkIfPresaleStarted();
@@ -289,6 +290,11 @@ export default function NFTEEE(props) {
       };
 
       doAsync();
+
+      // set an interval to get the number of token Ids minted every 5 seconds
+      setInterval(async function () {
+        await getTokenIdsMinted();
+      }, 5 * 1000);
     }
   }, [wallet.walletConnected]);
 
