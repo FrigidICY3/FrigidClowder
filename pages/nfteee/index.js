@@ -278,7 +278,7 @@ export default function NFTEEE(props) {
   useEffect(() => {
     // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
     if (!wallet.walletConnected) {
-      const doAsync = () => {
+      const doAsync = async () => {
         // Check if presale has started and ended
         const _presaleStarted = await checkIfPresaleStarted();
         if (_presaleStarted) {
