@@ -2,7 +2,7 @@ import { Contract, providers, utils } from "ethers";
 import Head from "next/head";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
-import { NFTEEE_ABI, NFT_CONTRACT_ADDRESS } from "../constants/icy3nfteee";
+import { NFTEEE_ABI, NFT_CONTRACT_ADDRESS } from "../../constants/icy3nfteee";
 import styles from "../../styles/Home.module.css";
 import WalletContext from "../../components/WalletContext";
 

@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 import Web3Modal from "web3modal";
 import { providers, Contract, logger, BigNumber } from "ethers";
 import { useContext, useEffect, useRef, useState } from "react";
-import { WHITELIST_CONTRACT_ADDRESS, WHITELIST_ABI } from "../constants/whitelist";
+import { WHITELIST_CONTRACT_ADDRESS, WHITELIST_ABI } from "../../constants/whitelist";
 import WalletContext from "../../components/WalletContext";
 
 export default function Whitelist() {
