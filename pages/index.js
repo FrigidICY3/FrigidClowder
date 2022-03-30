@@ -21,7 +21,7 @@ export default function Home({ connectWallet }) {
                     to the firigid 🧊 Clowder <img className="h-12 inline-block" src="./siamese.png"></img>!
                 </h1>
                 <div className="text-sm md:text-xl lg:text-2xl leading-5 mx-3 mt-6" >
-                    NOT COOl! It's an ICY 🧊 Clowder of developers in Crypto.
+                    NOT COOl! It is an ICY 🧊 Clowder of developers in Crypto.
                 </div>
             </div>
             <div>
