@@ -1,5 +1,5 @@
 
-export const NFT_CONTRACT_ADDRESS = "0x8dc0cf3FF48c266CDd77cd7208E6bf96Be2c7335"
+export const NFT_CONTRACT_ADDRESS = "0x4C66071B8C09e083A3180A338F47c9bBD4b44cd4"
 export const NFTEEE_ABI = [
   {
     "inputs": [
@@ -462,6 +462,19 @@ export const NFTEEE_ABI = [
       }
     ],
     "name": "setBaseURI",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_whitelist",
+        "type": "address"
+      }
+    ],
+    "name": "setwhitelist",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
