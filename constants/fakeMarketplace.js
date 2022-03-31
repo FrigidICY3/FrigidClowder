@@ -1,4 +1,4 @@
-export const FMP_CONTRACT_ADDRESS = "0x5789944C6fF6cbcB6EDEd54DE85e1551a67eF1e5"
+export const FMP_CONTRACT_ADDRESS = "0xdab198531ab17c71e443d4d5eb1cabdd21535f2b"
 export const FMP_CONTRACT_ABI = [
     {
       "inputs": [

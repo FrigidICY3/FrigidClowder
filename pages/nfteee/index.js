@@ -1,4 +1,4 @@
-import { Contract, providers, utils } from "ethers";
+import { BigNumber, Contract, providers, utils } from "ethers";
 import Head from "next/head";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
@@ -19,10 +19,9 @@ export default function NFTEEE(props) {
   const [isOwner, setIsOwner] = useState(false);
   // tokenIdsMinted keeps track of the number of tokenIds that have been minted
   const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
-  // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
-  // const web3ModalRef = useRef();
-
+  // wallet general context
   const wallet = useContext(WalletContext);
+
   /**
  * startPresale: starts the presale for the NFT Collection
  */
@@ -65,7 +64,7 @@ export default function NFTEEE(props) {
       // console.log("NFT Contract: ", await nftContract.presaleStarted());
       // call the presaleStarted from the contract
       const _presaleStarted = await nftContract.presaleStarted();
-      
+
       if (!_presaleStarted) {
         await getOwner();
       }
@@ -162,16 +161,21 @@ export default function NFTEEE(props) {
       const signer = wallet.signerRef.current;
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const whitelistContract = new Contract(
+      const nftContract = new Contract(
         NFT_CONTRACT_ADDRESS,
         NFTEEE_ABI,
         signer
       );
-      // call the presaleMint from the contract, only whitelisted addresses would be able to mint
-      const tx = await whitelistContract.presaleMint({
+
+      // call the _price automatically generated get function to get the price of the token
+      let price = await nftContract._price();
+      await price;
+
+      // call the presaleMint from the contract, only whitelisted addresses would be able to mintu
+      const tx = await nftContract.preSaleMint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
-        value: utils.parseEther("0.01"),
+        value: price,
       });
       setLoading(true);
       // wait for the transaction to get mined
@@ -197,11 +201,15 @@ export default function NFTEEE(props) {
         NFTEEE_ABI,
         signer
       );
+      // call the _price automatically generated get function to get the price of the token
+      let price = await nftContract._price();
+      await price;
+
       // call the mint from the contract to mint the Crypto Dev
       const tx = await whitelistContract.mint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
-        value: utils.parseEther("0.01"),
+        value: price,
       });
       setLoading(true);
       // wait for the transaction to get mined

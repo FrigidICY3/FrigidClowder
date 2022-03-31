@@ -73,7 +73,7 @@ export default function Home() {
                 // Only increase the amount if the tokens have not been claimed
                 // for a an NFT(for a given tokenId)
                 for (var i = 0; i < balance; i++) {
-                    const tokenId = await nftContract.tokenOfOwnerByIndex(address, i);
+                    const tokenId = await nftContract.tokenOfOwnerByIndex(wallet.walletAddress.current, i);
                     const claimed = await tokenContract.tokenIdsClaimed(tokenId);
                     if (!claimed) {
                         amount++;
@@ -238,7 +238,7 @@ export default function Home() {
             return (
                 <div>
                     <div className={styles.description}>
-                        {tokensToBeClaimed * 10} Tokens can be claimed!
+                        {tokensToBeClaimed * 3} Tokens can be claimed!
                     </div>
                     <button className={styles.button} onClick={claimCryptoDevTokens}>
                         Claim Tokens

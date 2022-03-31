@@ -152,7 +152,7 @@ export default function Whitelist() {
   // The array at the end of function call represents what state changes will trigger this effect
   // In this case, whenever the value of `walletConnected` changes - this effect will be called
   useEffect(() => {
-    console.log(wallet.walletConnected);
+    // console.log(wallet.walletConnected);
     if (wallet.walletConnected) {
       checkIfAddressInWhitelist();
       getNumberOfWhitelisted();

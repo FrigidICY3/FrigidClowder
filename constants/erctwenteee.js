@@ -1,4 +1,4 @@
-export const TOKEN_CONTRACT_ADDRESS = "0x9B21AE7fb90cBdf5D1B5363556bDD780bbC7D1a6"
+export const TOKEN_CONTRACT_ADDRESS = "0x9b21ae7fb90cbdf5d1b5363556bdd780bbc7d1a6"
 export const TOKEN_CONTRACT_ABI = [
   {
     "inputs": [

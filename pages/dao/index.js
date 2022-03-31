@@ -37,9 +37,10 @@ export default function DAO() {
     const getDAOTreasuryBalance = async () => {
         try {
             const provider = wallet.signerRef.current;
-            const balance = await provider.getBalance(
-                DAO_CONTRACT_ADDRESS
+            const balance = await provider.provider.getBalance(
+                DAO_CONTRACT_ADDRESS,
             );
+
             setTreasuryBalance(balance.toString());
         } catch (error) {
             console.error(error);
@@ -187,12 +188,9 @@ export default function DAO() {
     // DAO Treasury Balance, User NFT Balance, and Number of Proposals in the DAO
     useEffect(() => {
         if (wallet.walletConnected) {
-            let f = async () => {
-                await getDAOTreasuryBalance();
-                await getUserNFTBalance();
-                await getNumProposalsInDAO();
-            }
-            f();
+            getDAOTreasuryBalance();
+            getUserNFTBalance();
+            getNumProposalsInDAO();
         }
     }, [wallet.walletConnected]);
 
@@ -311,10 +309,9 @@ export default function DAO() {
         <div>
             <div className={styles.main}>
                 <div>
-                    <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
-                    <div className={styles.description}>Welcome to the DAO!</div>
+                    <h1 className={styles.title}>FRGDC DAO</h1>
                     <div className={styles.description}>
-                        Your CryptoDevs NFT Balance: {nftBalance}
+                        Your FRGDC NFT Balance: {nftBalance}
                         <br />
                         Treasury Balance: {formatEther(treasuryBalance)} ETH
                         <br />
