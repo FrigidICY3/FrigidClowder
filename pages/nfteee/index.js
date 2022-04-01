@@ -196,7 +196,7 @@ export default function NFTEEE(props) {
       const signer = wallet.signerRef.current;
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const whitelistContract = new Contract(
+      const nftContract = new Contract(
         NFT_CONTRACT_ADDRESS,
         NFTEEE_ABI,
         signer
@@ -206,7 +206,7 @@ export default function NFTEEE(props) {
       await price;
 
       // call the mint from the contract to mint the Crypto Dev
-      const tx = await whitelistContract.mint({
+      const tx = await nftContract.mint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
         value: price,
