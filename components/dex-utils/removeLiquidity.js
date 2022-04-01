@@ -3,7 +3,7 @@ import { Contract, providers, utils, BigNumber } from "ethers";
 import {
   DEX_CONTRACT_ABI,
   DEX_CONTRACT_ADDRESS,
-} from "../../../constants/dex";
+} from "../../constants/dex";
 
 /**
  * removeLiquidity: Removes the `removeLPTokensWei` amount of LP tokens from

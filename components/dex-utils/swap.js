@@ -3,12 +3,12 @@ import { Contract } from "ethers";
 import {
   DEX_CONTRACT_ABI,
   DEX_CONTRACT_ADDRESS,
-} from "../../../constants/dex";
+} from "../../constants/dex";
 
 import {
   TOKEN_CONTRACT_ABI,
   TOKEN_CONTRACT_ADDRESS,
-} from "../../../constants/erctwenteee";
+} from "../../constants/erctwenteee";
 
 /*
     getAmountOfTokensReceivedFromSwap:  Returns the number of Eth/Crypto Dev tokens that can be recieved 

@@ -1,18 +1,18 @@
 import { BigNumber, providers, utils } from "ethers";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "../../styles/Home.module.css";
-import { addLiquidity, calculateCD } from "./utils/addLiquidity";
+import { addLiquidity, calculateCD } from "../../components/dex-utils/addLiquidity";
 import {
     getCDTokensBalance,
     getEtherBalance,
     getLPTokensBalance,
     getReserveOfCDTokens,
-} from "./utils/getAmounts";
+} from "../../components/dex-utils/getAmounts";
 import {
     getTokensAfterRemove,
     removeLiquidity,
-} from "./utils/removeLiquidity";
-import { swapTokens, getAmountOfTokensReceivedFromSwap } from "./utils/swap";
+} from "../../components/dex-utils/removeLiquidity";
+import { swapTokens, getAmountOfTokensReceivedFromSwap } from "../../components/dex-utils/swap";
 import WalletContext from "../../components/WalletContext";
 
 export default function Home() {

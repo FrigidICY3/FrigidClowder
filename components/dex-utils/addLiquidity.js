@@ -2,12 +2,12 @@ import { Contract, utils } from "ethers";
 import {
   DEX_CONTRACT_ABI,
   DEX_CONTRACT_ADDRESS,
-} from "../../../constants/dex";
+} from "../../constants/dex";
 
 import {
   TOKEN_CONTRACT_ABI,
   TOKEN_CONTRACT_ADDRESS,
-} from "../../../constants/erctwenteee";
+} from "../../constants/erctwenteee";
 
 /**
  * addLiquidity helps add liquidity to the exchange,
