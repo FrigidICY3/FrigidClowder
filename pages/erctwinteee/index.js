@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import {
     TOKEN_CONTRACT_ABI,
     TOKEN_CONTRACT_ADDRESS,
+    TOKEN_CONTRACT_ABI_TIDSC
 } from "../../constants/erctwenteee.js";
 
 import {

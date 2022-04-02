@@ -21,6 +21,8 @@ function MyApp({ Component, pageProps }) {
   const networkRef = useRef("Ropsten");
   // chainIdRef keep track of the chainId of the current networkRef
   const chainIdRef = useRef(3);
+  // ENS
+  const [ens, setENS] = useState("");
 
 
   /*
@@ -34,6 +36,11 @@ function MyApp({ Component, pageProps }) {
       setWalletConnected(true);
       walletAddress.current = signerRef.current.provider.provider.selectedAddress;
       // console.log(walletAddress.current);
+      let _ens = await signerRef.current.provider.lookupAddress(walletAddress.current);
+      // console.log(_ens);
+      if (_ens) {
+        setENS(_ens);
+      }
 
     } catch (err) {
       console.error(err);
@@ -57,7 +64,7 @@ function MyApp({ Component, pageProps }) {
     // Since we store `web3Modal` as a reference, we need to access the `current` value to get access to the underlying object
     const provider = await _web3Modal.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
-
+    const signerT = web3Provider.getSigner();
     // register the current user network
     const { chainId } = await web3Provider.getNetwork();
     if (chainId !== chainIdRef.current) {
@@ -87,7 +94,7 @@ function MyApp({ Component, pageProps }) {
     }
     connectWallet();
 
-  }, [walletConnected]);
+  }, [walletConnected, ens]);
 
   return (
     <WalletContext.Provider value={{
@@ -97,6 +104,7 @@ function MyApp({ Component, pageProps }) {
       signerRef,
       networkRef,
       chainIdRef,
+      ens,
     }}>
       <Layout>
         <Component {...pageProps} />

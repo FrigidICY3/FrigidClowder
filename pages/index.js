@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import WalletContext from "../components/WalletContext";
 
-export default function Home({ connectWallet }) {
+export default function Home() {
     const wallet = useContext(WalletContext);
 
     useEffect(() => {
         if (wallet.walletAddress.current !== undefined) {
             let wAddress = document.getElementById("wAddress");
-            wAddress.textContent = wallet.walletAddress.current.substring(0, 8) + " ";
+            wAddress.textContent = wallet.ens ? wallet.ens + " " : wallet.walletAddress.current.substring(0, 8) + " ";
         }
-    }, [wallet.walletConnected]);
+    }, [wallet.walletConnected, wallet.ens]);
 
     return (
         <div className="min-h-[80vh] flex flex-row justify-center items-center" >
